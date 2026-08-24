@@ -38,9 +38,9 @@ function Events() {
               <span className="float-right rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">{event.category}</span>
               <h3 className="mt-3 text-xl font-bold">{event.title}</h3>
               <p className="mt-2 text-slate-600">{event.location}</p>
-              <button className="mt-6 rounded-lg bg-slate-900 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-700" type="button">
+              <a className="mt-6 inline-block rounded-lg bg-slate-900 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-700" href={`mailto:events@speakly.com?subject=${encodeURIComponent(event.title)}`}>
                 View Event
-              </button>
+              </a>
             </article>
           ))}
         </div>
