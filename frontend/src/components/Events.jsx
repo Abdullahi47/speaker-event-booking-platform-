@@ -2,7 +2,7 @@ const events = [
   {
     date: '12 Sep',
     title: 'Business Growth Conference',
-    location: 'hargeisa, somali',
+    location: 'Hargeisa, Somaliland',
   },
   {
     date: '20 Oct',
@@ -12,7 +12,7 @@ const events = [
   {
     date: '05 Nov',
     title: 'Young Leaders Summit',
-    location: 'nairobi, kenya',
+    location: 'Nairobi, Kenya',
   },
 ]
 
