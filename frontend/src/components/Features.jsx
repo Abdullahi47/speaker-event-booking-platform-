@@ -34,7 +34,7 @@ function Features() {
               className="rounded-xl border border-slate-200 p-6"
             >
               <span aria-hidden="true" className="grid size-10 place-items-center rounded-lg bg-blue-50 text-xl text-blue-600">{feature.icon}</span>
-              <h3 className="text-xl font-bold">{feature.title}</h3>
+              <h3 className="mt-4 text-xl font-bold">{feature.title}</h3>
               <p className="mt-3 text-slate-600">
                 {feature.description}
               </p>
