@@ -12,9 +12,9 @@ function Hero() {
           Innovate Engage Conferences
         </h1>
 
-        <p className="mt-6 text-slate-300">
+        <address className="mt-6 not-italic text-slate-300">
           Zoobe KM4, Mogadishu, Somalia
-        </p>
+        </address>
 
         <div className="mt-8 flex flex-wrap gap-4">
           <a href="#features" className="rounded-lg bg-blue-600 px-6 py-3 font-semibold hover:bg-blue-700">
