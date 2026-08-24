@@ -11,6 +11,12 @@ function Footer() {
           </p>
         </div>
 
+        <nav aria-label="Footer navigation" className="flex gap-5 text-sm text-slate-300">
+          <a className="hover:text-white" href="#home">Home</a>
+          <a className="hover:text-white" href="#features">Features</a>
+          <a className="hover:text-white" href="#events">Events</a>
+        </nav>
+
         <p className="text-sm text-slate-400">
           &copy; {currentYear} Speakly. All rights reserved.
         </p>
