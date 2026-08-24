@@ -1,121 +1,46 @@
 import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
+    <header className="relative z-50 border-b border-slate-200 bg-white">
+      <div className="mx-auto flex h-20 max-w-7xl items-center px-6 lg:px-8">
+        <a href="/" className="flex items-center gap-2.5 font-display text-[22px] font-extrabold tracking-[-1px] text-ink" aria-label="Speakly home">
+          <span className="grid size-9 -rotate-3 place-items-center rounded-[10px_4px_10px_4px] bg-brand text-lg text-white">S</span>
+          peaker and events booking platform
+        </a>
+
+        <nav className="mx-auto hidden items-center gap-8 text-sm font-semibold text-slate-600 md:flex" aria-label="Main navigation">
+          <a className="transition-colors hover:text-brand" href="#speakers">Find speakers</a>
+          <a className="transition-colors hover:text-brand" href="#categories">Categories</a>
+          <a className="transition-colors hover:text-brand" href="#how-it-works">How it works</a>
+          <a className="transition-colors hover:text-brand" href="#about">About us</a>
+        </nav>
+
+        <div className="hidden items-center gap-3 md:flex">
+          <button className="rounded-lg px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-100" type="button">Log in</button>
+          <button className="rounded-xl bg-brand px-5 py-3 text-sm font-bold text-white shadow-lg shadow-indigo-200 transition hover:-translate-y-0.5 hover:bg-brand-dark" type="button">Join as a speaker</button>
         </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
+
+        <button className="ml-auto grid size-11 place-items-center rounded-lg text-ink transition hover:bg-slate-100 md:hidden" type="button" aria-label="Toggle navigation" aria-expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)}>
+          <span className="sr-only">Menu</span>
+          <span className="space-y-1.5"><span className="block h-0.5 w-6 bg-current"/><span className="block h-0.5 w-6 bg-current"/><span className="block h-0.5 w-6 bg-current"/></span>
         </button>
-      </section>
+      </div>
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+      {menuOpen && (
+        <nav className="absolute top-[72px] right-4 left-4 rounded-2xl border border-slate-200 bg-white p-3 shadow-xl md:hidden" aria-label="Mobile navigation">
+          {[['Find speakers', '#speakers'], ['Categories', '#categories'], ['How it works', '#how-it-works'], ['About us', '#about']].map(([label, href]) => (
+            <a key={label} className="block rounded-lg px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-brand" href={href} onClick={() => setMenuOpen(false)}>{label}</a>
+          ))}
+          <div className="mt-2 grid grid-cols-2 gap-2 border-t border-slate-100 pt-3">
+            <button className="rounded-xl border border-slate-200 px-4 py-3 text-sm font-semibold" type="button">Log in</button>
+            <button className="rounded-xl bg-brand px-4 py-3 text-sm font-bold text-white" type="button">Join as speaker</button>
+          </div>
+        </nav>
+      )}
+    </header>
   )
 }
 
