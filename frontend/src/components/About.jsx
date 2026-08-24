@@ -8,6 +8,12 @@ function About() {
           Speakly helps organizers discover and book speakers for conferences, workshops, and community programs.
           Speakers can join with a profile that highlights their expertise, experience, and availability.
         </p>
+        <a
+          className="mt-8 inline-block rounded-lg bg-slate-900 px-6 py-3 text-sm font-semibold text-white hover:bg-slate-700"
+          href={`mailto:hello@speakly.com?subject=${encodeURIComponent('Speakly enquiry')}`}
+        >
+          Contact us
+        </a>
       </div>
     </section>
   )
