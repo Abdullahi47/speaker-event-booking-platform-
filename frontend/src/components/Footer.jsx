@@ -1,4 +1,6 @@
 function Footer() {
+  const currentYear = new Date().getFullYear()
+
   return (
     <footer className="bg-slate-950 px-6 py-10 text-white lg:px-8">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-5 text-center md:flex-row md:text-left">
@@ -10,7 +12,7 @@ function Footer() {
         </div>
 
         <p className="text-sm text-slate-400">
-          &copy; 2026 Speakly. All rights reserved.
+          &copy; {currentYear} Speakly. All rights reserved.
         </p>
       </div>
     </footer>
