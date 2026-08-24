@@ -11,11 +11,65 @@
 
 @layer base {
   html { scroll-behavior: smooth; }
-  body { @apply m-0 min-w-80 min-h-screen bg-[#f8faf7] text-ink antialiased; }
+  body { @apply m-0 min-w-[320px] min-h-screen overflow-x-hidden bg-[#f8faf7] text-ink antialiased; }
   button { @apply cursor-pointer; }
-  :where(a, button):focus-visible { @apply outline-2 outline-offset-4 outline-blue-500; }
+  :where(a, button, input, select, textarea):focus-visible { @apply outline-2 outline-offset-4 outline-blue-500; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
 }
 
 @layer components {
   .skip-link { @apply fixed left-4 top-4 z-50 -translate-y-24 rounded-lg bg-white px-4 py-3 font-semibold text-ink shadow-xl transition-transform focus:translate-y-0; }
+
+  .btn {
+    @apply inline-flex items-center justify-center rounded-lg px-6 py-3 text-center text-sm font-semibold transition duration-200 ease-out;
+  }
+
+  .btn-primary {
+    @apply btn bg-blue-600 text-white shadow-sm hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-md;
+  }
+
+  .btn-accent {
+    @apply btn bg-lime-300 text-slate-900 shadow-sm hover:-translate-y-0.5 hover:bg-lime-400 hover:shadow-md;
+  }
+
+  .btn-dark {
+    @apply btn bg-slate-900 text-white shadow-sm hover:-translate-y-0.5 hover:bg-slate-800 hover:shadow-lg;
+  }
+
+  .btn-ghost {
+    @apply btn border border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50;
+  }
+
+  .btn:active {
+    @apply translate-y-0 shadow-sm;
+  }
+
+  .btn:disabled {
+    @apply cursor-not-allowed opacity-70 hover:translate-y-0 hover:shadow-sm;
+  }
+
+  .section {
+    @apply scroll-mt-24 px-4 py-16 sm:px-6 sm:py-20 lg:px-8;
+  }
+
+  .section-eyebrow {
+    @apply text-sm font-semibold uppercase tracking-[0.16em] text-blue-600;
+  }
+
+  .section-title {
+    @apply mt-3 font-display text-3xl font-extrabold tracking-tight text-slate-900 md:text-4xl;
+  }
+
+  .section-copy {
+    @apply mt-4 max-w-2xl text-base leading-relaxed text-slate-600 md:text-lg;
+  }
 }

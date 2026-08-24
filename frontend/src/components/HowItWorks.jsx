@@ -1,32 +1,44 @@
+import SectionHeading from './SectionHeading'
+
 const steps = [
   {
-    title: '1. Search',
-    description: 'Find speakers by name, topic, or category.',
+    number: '01',
+    title: 'Search',
+    description: 'Find speakers by name, topic, or category. Filter the list until it matches your event brief.',
   },
   {
-    title: '2. Compare',
-    description: 'Review experience, rates, and expertise before you choose.',
+    number: '02',
+    title: 'Compare',
+    description: 'Review experience, rates, and expertise side by side before you choose who to invite.',
   },
   {
-    title: '3. Book',
-    description: 'Send a booking request and coordinate the event details.',
+    number: '03',
+    title: 'Book',
+    description: 'Send a booking request and coordinate dates, format, and event details in one conversation.',
   },
 ]
 
 function HowItWorks() {
   return (
-    <section id="how-it-works" className="scroll-mt-20 bg-slate-100 px-6 py-16 text-slate-900 lg:px-8">
+    <section id="how-it-works" className="section bg-slate-100 text-slate-900">
       <div className="mx-auto max-w-7xl">
-        <div className="text-center">
-          <p className="font-semibold text-blue-600">How It Works</p>
-          <h2 className="mt-2 text-3xl font-bold">Book a speaker in three steps</h2>
-        </div>
+        <SectionHeading
+          eyebrow="How It Works"
+          title="Book a speaker in three steps"
+          copy="From the first search to a confirmed booking, Speakly keeps the process short and easy to follow."
+        />
 
-        <ol className="mt-10 grid gap-6 md:grid-cols-3">
+        <ol className="relative mt-12 grid gap-6 md:grid-cols-3 md:before:pointer-events-none md:before:absolute md:before:top-10 md:before:right-[16%] md:before:left-[16%] md:before:h-px md:before:bg-slate-300">
           {steps.map((step) => (
-            <li className="rounded-xl bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg" key={step.title}>
-              <h3 className="text-xl font-bold">{step.title}</h3>
-              <p className="mt-3 text-slate-600">{step.description}</p>
+            <li
+              className="relative rounded-xl bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg"
+              key={step.number}
+            >
+              <span className="grid size-12 place-items-center rounded-full bg-blue-600 text-sm font-bold text-white">
+                {step.number}
+              </span>
+              <h3 className="mt-5 font-display text-xl font-bold tracking-tight">{step.title}</h3>
+              <p className="mt-3 leading-relaxed text-slate-600">{step.description}</p>
             </li>
           ))}
         </ol>

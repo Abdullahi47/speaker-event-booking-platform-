@@ -1,45 +1,119 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
+import Button from './Button'
+import SectionHeading from './SectionHeading'
+import SpeakerCard from './SpeakerCard'
 
 const CATEGORIES = ['Leadership', 'Technology', 'Health', 'Education', 'Finance', 'Culture']
 
 const SPEAKERS = [
-  { name: 'Amina Hassan', expert: 'Leadership', experience: '12 years', rate: '$2,500', joined: '2021' },
-  { name: 'Daniel Okello', expert: 'Technology', experience: '9 years', rate: '$1,800', joined: '2022' },
-  { name: 'Sofia Mendes', expert: 'Health', experience: '15 years', rate: '$3,200', joined: '2020' },
-  { name: 'James Kariuki', expert: 'Finance', experience: '11 years', rate: '$2,100', joined: '2023' },
-  { name: 'Layla Ibrahim', expert: 'Education', experience: '8 years', rate: '$1,400', joined: '2024' },
-  { name: 'Omar Yusuf', expert: 'Culture', experience: '10 years', rate: '$1,650', joined: '2022' },
+  {
+    name: 'Amina Hassan',
+    expert: 'Leadership',
+    experience: '12 years',
+    rate: '$2,500',
+    joined: '2021',
+    location: 'Mogadishu',
+    available: true,
+    topics: ['Team culture', 'Women in leadership'],
+    bio: 'Helps growing companies build leadership habits that last beyond a single keynote.',
+  },
+  {
+    name: 'Daniel Okello',
+    expert: 'Technology',
+    experience: '9 years',
+    rate: '$1,800',
+    joined: '2022',
+    location: 'Nairobi',
+    available: true,
+    topics: ['Product strategy', 'AI for business'],
+    bio: 'Breaks down practical technology choices for founders and public-sector teams.',
+  },
+  {
+    name: 'Sofia Mendes',
+    expert: 'Health',
+    experience: '15 years',
+    rate: '$3,200',
+    joined: '2020',
+    location: 'Lisbon',
+    available: false,
+    topics: ['Public health', 'Wellbeing at work'],
+    bio: 'Clinician and educator focused on health systems, prevention, and community care.',
+  },
+  {
+    name: 'James Kariuki',
+    expert: 'Finance',
+    experience: '11 years',
+    rate: '$2,100',
+    joined: '2023',
+    location: 'Nairobi',
+    available: true,
+    topics: ['Startup finance', 'Investment readiness'],
+    bio: 'Works with operators who need clearer numbers before they scale or raise.',
+  },
+  {
+    name: 'Layla Ibrahim',
+    expert: 'Education',
+    experience: '8 years',
+    rate: '$1,400',
+    joined: '2024',
+    location: 'Hargeisa',
+    available: true,
+    topics: ['Learning design', 'Youth programs'],
+    bio: 'Designs learning experiences for schools, NGOs, and community education programs.',
+  },
+  {
+    name: 'Omar Yusuf',
+    expert: 'Culture',
+    experience: '10 years',
+    rate: '$1,650',
+    joined: '2022',
+    location: 'Mogadishu',
+    available: true,
+    topics: ['Storytelling', 'Creative cities'],
+    bio: 'Connects culture, media, and city-making for festivals and civic events.',
+  },
 ]
 
 function Speakers() {
   const [query, setQuery] = useState('')
   const [activeCategory, setActiveCategory] = useState('All')
+  const [debouncedQuery, setDebouncedQuery] = useState('')
+  const [isSearching, setIsSearching] = useState(true)
+
+  useEffect(() => {
+    setIsSearching(true)
+    const timer = window.setTimeout(() => {
+      setDebouncedQuery(query)
+      setIsSearching(false)
+    }, 320)
+
+    return () => window.clearTimeout(timer)
+  }, [query, activeCategory])
 
   const speakers = useMemo(() => {
-    const term = query.trim().toLowerCase()
+    const term = debouncedQuery.trim().toLowerCase()
     return SPEAKERS.filter((speaker) => {
       const matchesCategory = activeCategory === 'All' || speaker.expert === activeCategory
       const matchesQuery =
         !term ||
         speaker.name.toLowerCase().includes(term) ||
-        speaker.expert.toLowerCase().includes(term)
+        speaker.expert.toLowerCase().includes(term) ||
+        speaker.topics.some((topic) => topic.toLowerCase().includes(term))
       return matchesCategory && matchesQuery
     })
-  }, [query, activeCategory])
+  }, [debouncedQuery, activeCategory])
 
   return (
-    <section id="find-speakers" className="scroll-mt-20 bg-white px-6 py-16 text-slate-900 lg:px-8">
+    <section id="find-speakers" className="section bg-white text-slate-900" aria-busy={isSearching}>
       <div className="mx-auto max-w-7xl">
-        <div className="text-center">
-          <p className="font-semibold text-blue-600">Find Speakers</p>
-          <h2 className="mt-2 text-3xl font-bold">Book a speaker for your next event</h2>
-          <p className="mx-auto mt-3 max-w-2xl text-slate-600">
-            Search by name or topic, then filter by category to shortlist speakers that match your audience.
-          </p>
-        </div>
+        <SectionHeading
+          eyebrow="Find Speakers"
+          title="Book a speaker for your next event"
+          copy="Search by name or topic, then filter by category to shortlist speakers that match your audience."
+        />
 
         <form
-          className="mx-auto mt-8 flex max-w-xl gap-2"
+          className="mx-auto mt-8 flex max-w-xl flex-col gap-2 sm:flex-row"
           onSubmit={(event) => event.preventDefault()}
         >
           <label className="sr-only" htmlFor="speaker-search">Search speakers</label>
@@ -50,18 +124,19 @@ function Speakers() {
             value={query}
             onChange={(event) => setQuery(event.target.value)}
           />
-          <button className="rounded-xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-700" type="submit">
+          <Button className="rounded-xl" type="submit">
             Search
-          </button>
+          </Button>
         </form>
 
         <div id="categories" className="scroll-mt-20 mt-10">
-          <p className="text-sm font-semibold text-slate-500">Categories</p>
-          <div className="mt-3 flex flex-wrap gap-3">
+          <p id="category-label" className="text-sm font-semibold text-slate-500">Categories</p>
+          <div className="mt-3 flex flex-wrap gap-3" role="group" aria-labelledby="category-label">
             {['All', ...CATEGORIES].map((category) => (
               <button
                 key={category}
                 type="button"
+                aria-pressed={activeCategory === category}
                 className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
                   activeCategory === category
                     ? 'bg-blue-600 text-white'
@@ -75,10 +150,11 @@ function Speakers() {
           </div>
         </div>
 
-        <p className="mt-8 text-sm text-slate-600">
-          {speakers.length} speaker{speakers.length === 1 ? '' : 's'} available
-          {activeCategory !== 'All' ? ` in ${activeCategory}` : ''}.
-          {(query || activeCategory !== 'All') && (
+        <p className="mt-8 text-sm text-slate-600" aria-live="polite">
+          {isSearching
+            ? 'Searching speakers...'
+            : `${speakers.length} speaker${speakers.length === 1 ? '' : 's'} available${activeCategory !== 'All' ? ` in ${activeCategory}` : ''}.`}
+          {(query || activeCategory !== 'All') && !isSearching && (
             <button
               className="ml-3 font-semibold text-blue-600 hover:text-blue-800"
               type="button"
@@ -92,44 +168,43 @@ function Speakers() {
           )}
         </p>
 
-        {speakers.length === 0 ? (
-          <p className="mt-8 rounded-xl border border-dashed border-slate-300 px-6 py-12 text-center text-slate-600">
-            No speakers match that search. Try a different name or category.
-          </p>
+        {isSearching ? (
+          <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" aria-hidden="true">
+            {Array.from({ length: 6 }).map((_, index) => (
+              <li className="animate-pulse rounded-xl border border-slate-200 p-6" key={index}>
+                <div className="flex items-start gap-4">
+                  <span className="size-14 rounded-full bg-slate-200" />
+                  <div className="flex-1 space-y-2">
+                    <div className="h-5 w-32 rounded bg-slate-200" />
+                    <div className="h-4 w-20 rounded bg-slate-100" />
+                  </div>
+                </div>
+                <div className="mt-4 h-12 rounded bg-slate-100" />
+                <div className="mt-6 h-10 rounded-lg bg-slate-200" />
+              </li>
+            ))}
+          </ul>
+        ) : speakers.length === 0 ? (
+          <div className="mt-8 rounded-2xl border border-dashed border-slate-300 bg-slate-50 px-6 py-16 text-center">
+            <h3 className="font-display text-xl font-bold text-slate-900">No speakers match those filters</h3>
+            <p className="mx-auto mt-2 max-w-md text-slate-600">
+              Try a different name, topic, or category. You can also clear the filters to see the full speaker list again.
+            </p>
+            <Button
+              className="mt-6"
+              type="button"
+              onClick={() => {
+                setQuery('')
+                setActiveCategory('All')
+              }}
+            >
+              Clear filters
+            </Button>
+          </div>
         ) : (
           <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {speakers.map((speaker) => (
-              <li className="rounded-xl border border-slate-200 p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg" key={speaker.name}>
-                <div className="flex items-center gap-4">
-                  <span className="grid size-12 place-items-center rounded-full bg-blue-600 text-lg font-bold text-white">
-                    {speaker.name.charAt(0)}
-                  </span>
-                  <div>
-                    <h3 className="text-xl font-bold">{speaker.name}</h3>
-                    <p className="text-sm font-semibold text-blue-600">{speaker.expert}</p>
-                  </div>
-                </div>
-                <dl className="mt-5 grid grid-cols-2 gap-3 text-sm text-slate-600">
-                  <div>
-                    <dt className="font-semibold text-slate-500">Experience</dt>
-                    <dd>{speaker.experience}</dd>
-                  </div>
-                  <div>
-                    <dt className="font-semibold text-slate-500">Rate</dt>
-                    <dd>{speaker.rate}</dd>
-                  </div>
-                  <div>
-                    <dt className="font-semibold text-slate-500">Joined</dt>
-                    <dd>{speaker.joined}</dd>
-                  </div>
-                </dl>
-                <a
-                  className="mt-6 inline-block rounded-lg bg-slate-900 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-700"
-                  href={`mailto:events@speakly.com?subject=${encodeURIComponent(`Booking request: ${speaker.name}`)}`}
-                >
-                  Request booking
-                </a>
-              </li>
+              <SpeakerCard key={speaker.name} speaker={speaker} />
             ))}
           </ul>
         )}

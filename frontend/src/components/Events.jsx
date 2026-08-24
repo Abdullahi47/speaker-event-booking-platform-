@@ -1,3 +1,6 @@
+import Button from './Button'
+import SectionHeading from './SectionHeading'
+
 const events = [
   {
     date: '12 Sep',
@@ -24,26 +27,38 @@ const events = [
 
 function Events() {
   return (
-    <section id="events" className="scroll-mt-20 bg-slate-100 px-6 py-16 text-slate-900 lg:px-8">
+    <section id="events" className="section bg-slate-100 text-slate-900">
       <div className="mx-auto max-w-7xl">
-        <div className="text-center">
-          <p className="font-semibold text-blue-600">Upcoming Events</p>
-          <h2 className="mt-2 text-3xl font-bold">Join Our Next Event</h2>
-        </div>
+        <SectionHeading
+          eyebrow="Upcoming Events"
+          title="Join Our Next Event"
+        />
 
+        {events.length === 0 ? (
+          <div className="mt-10 rounded-2xl border border-dashed border-slate-300 bg-white px-6 py-16 text-center">
+            <h3 className="font-display text-xl font-bold">No upcoming events yet</h3>
+            <p className="mx-auto mt-2 max-w-md text-slate-600">
+              New conferences will appear here. In the meantime, you can still request a speaker for your own event.
+            </p>
+            <Button as="a" className="mt-6" href="#about-us">Request a speaker</Button>
+          </div>
+        ) : (
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {events.map((event) => (
-            <article className="rounded-xl bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg" key={event.title}>
-              <time className="font-bold text-blue-600" dateTime={event.dateTime}>{event.date}</time>
-              <span className="float-right rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">{event.category}</span>
-              <h3 className="mt-3 text-xl font-bold">{event.title}</h3>
+            <article className="flex h-full flex-col rounded-xl bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg" key={event.title}>
+              <div className="flex items-start justify-between gap-3">
+                <time className="font-bold text-blue-600" dateTime={event.dateTime}>{event.date}</time>
+                <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">{event.category}</span>
+              </div>
+              <h3 className="mt-3 font-display text-xl font-bold tracking-tight">{event.title}</h3>
               <p className="mt-2 text-slate-600">{event.location}</p>
-              <a className="mt-6 inline-block rounded-lg bg-slate-900 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-700" href={`mailto:events@speakly.com?subject=${encodeURIComponent(event.title)}`}>
+              <Button as="a" className="mt-auto w-full" href={`mailto:events@speakly.com?subject=${encodeURIComponent(event.title)}`}>
                 View Event
-              </a>
+              </Button>
             </article>
           ))}
         </div>
+        )}
       </div>
     </section>
   )
