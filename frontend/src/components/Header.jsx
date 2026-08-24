@@ -1,9 +1,21 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const navItems = ['Find speakers', 'Categories', 'How it works', 'About us']
+const joinHref = `mailto:speakers@speakly.com?subject=${encodeURIComponent('Join as a speaker')}`
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
+
+  useEffect(() => {
+    if (!menuOpen) return undefined
+
+    const onKeyDown = (event) => {
+      if (event.key === 'Escape') setMenuOpen(false)
+    }
+
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [menuOpen])
 
   return (
     <header className="relative z-30 border-b border-slate-200 bg-white text-ink">
@@ -19,7 +31,7 @@ function Header() {
 
         <div className="hidden items-center gap-3 md:flex">
           <button className="rounded-lg px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-100" type="button">Log in</button>
-          <button className="rounded-xl bg-slate-950 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-slate-300 transition hover:-translate-y-0.5 hover:bg-slate-800" type="button">Join as a speaker</button>
+          <a className="rounded-xl bg-slate-950 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-slate-300 transition hover:-translate-y-0.5 hover:bg-slate-800" href={joinHref}>Join as a speaker</a>
         </div>
 
         <button className="ml-auto grid size-11 place-items-center rounded-lg transition hover:bg-slate-100 md:hidden" type="button" aria-label="Toggle menu" aria-expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)}>
@@ -31,7 +43,7 @@ function Header() {
             {navItems.map((item) => <NavLink item={item} key={item} onClick={() => setMenuOpen(false)} mobile />)}
             <div className="mt-2 grid grid-cols-2 gap-2 border-t border-slate-100 pt-3">
               <button className="rounded-xl border border-slate-200 px-4 py-3 text-sm font-semibold" type="button">Log in</button>
-              <button className="rounded-xl bg-slate-950 px-4 py-3 text-sm font-bold text-white hover:bg-slate-800" type="button">Join as speaker</button>
+              <a className="rounded-xl bg-slate-950 px-4 py-3 text-center text-sm font-bold text-white hover:bg-slate-800" href={joinHref} onClick={() => setMenuOpen(false)}>Join as speaker</a>
             </div>
           </nav>
         )}
