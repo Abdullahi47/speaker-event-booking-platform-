@@ -19,6 +19,8 @@ function Header() {
   const menuButtonRef = useRef(null)
   const mobileNavRef = useRef(null)
   const loginDialogRef = useRef(null)
+  const loginOpenRef = useRef(false)
+  loginOpenRef.current = loginOpen
 
   useEffect(() => {
     if (!menuOpen) return undefined
@@ -53,9 +55,9 @@ function Header() {
     return () => {
       document.body.style.overflow = previousOverflow
       window.removeEventListener('keydown', onKeyDown)
-      if (!loginOpen) menuButtonRef.current?.focus()
+      if (!loginOpenRef.current) menuButtonRef.current?.focus()
     }
-  }, [menuOpen, loginOpen])
+  }, [menuOpen])
 
   useEffect(() => {
     if (!loginOpen) return undefined

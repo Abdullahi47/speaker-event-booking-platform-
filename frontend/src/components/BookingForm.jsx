@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Button from './Button'
 
 const EVENT_TYPES = ['Conference', 'Workshop', 'Summit', 'Community program', 'Other']
@@ -35,6 +35,11 @@ function BookingForm() {
   const [values, setValues] = useState(initialValues)
   const [errors, setErrors] = useState({})
   const [status, setStatus] = useState('idle')
+  const submitTimerRef = useRef(null)
+
+  useEffect(() => {
+    return () => window.clearTimeout(submitTimerRef.current)
+  }, [])
 
   function handleChange(event) {
     const { name, value } = event.target
@@ -61,9 +66,10 @@ function BookingForm() {
     }
 
     setStatus('submitting')
-    window.setTimeout(() => {
-      setStatus('success')
+    submitTimerRef.current = window.setTimeout(() => {
+      setErrors({})
       setValues(initialValues)
+      setStatus('success')
     }, 700)
   }
 

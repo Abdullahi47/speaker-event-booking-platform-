@@ -43,21 +43,21 @@ function Events() {
             <Button as="a" className="mt-6" href="#about-us">Request a speaker</Button>
           </div>
         ) : (
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {events.map((event) => (
-            <article className="flex h-full flex-col rounded-xl bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg" key={event.title}>
-              <div className="flex items-start justify-between gap-3">
-                <time className="font-bold text-blue-600" dateTime={event.dateTime}>{event.date}</time>
-                <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">{event.category}</span>
-              </div>
-              <h3 className="mt-3 font-display text-xl font-bold tracking-tight">{event.title}</h3>
-              <p className="mt-2 text-slate-600">{event.location}</p>
-              <Button as="a" className="mt-auto w-full" href={`mailto:events@speakly.com?subject=${encodeURIComponent(event.title)}`}>
-                View Event
-              </Button>
-            </article>
-          ))}
-        </div>
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {events.map((event) => (
+              <article className="flex h-full flex-col rounded-xl bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg" key={event.title}>
+                <div className="flex items-start justify-between gap-3">
+                  <time className="font-bold text-blue-600" dateTime={event.dateTime}>{event.date}</time>
+                  <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">{event.category}</span>
+                </div>
+                <h3 className="mt-3 font-display text-xl font-bold tracking-tight">{event.title}</h3>
+                <p className="mt-2 text-slate-600">{event.location}</p>
+                <Button as="a" className="mt-auto w-full" href={`mailto:events@speakly.com?subject=${encodeURIComponent(event.title)}`}>
+                  View Event
+                </Button>
+              </article>
+            ))}
+          </div>
         )}
       </div>
     </section>
