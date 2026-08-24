@@ -4,7 +4,7 @@ const router = express.Router();
 
 const imagecontroller = require("../controller/Organizationcontroller");
 
-const uploadiamge = require("./controller/middleware/upload");
+const uploadiamge = require("../controller/middleware/upload");
 
 
 // CREATE

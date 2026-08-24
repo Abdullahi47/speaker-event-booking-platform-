@@ -1,4 +1,4 @@
-const imagemode = require("../../image");
+const imagemode = require("../organization");
 
 // CREATE
 const create = async (req, res) => {
