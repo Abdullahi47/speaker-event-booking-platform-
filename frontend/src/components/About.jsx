@@ -6,7 +6,7 @@ function About() {
         <h2 className="mt-2 text-3xl font-bold">Connecting great speakers with great events</h2>
         <p className="mx-auto mt-4 max-w-3xl text-lg text-slate-600">
           Speakly helps organizers discover and book speakers for conferences, workshops, and community programs.
-          Speakers can join with a profile that highlights their expertise, experience, and availability.
+          Speakers can join with a profile that highlights their expertise, experience, and availability. 
         </p>
         <a
           className="mt-8 inline-block rounded-lg bg-slate-900 px-6 py-3 text-sm font-semibold text-white hover:bg-slate-700"
