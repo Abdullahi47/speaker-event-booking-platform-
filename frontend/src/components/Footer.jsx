@@ -10,7 +10,7 @@ function Footer() {
         </div>
 
         <p className="text-sm text-slate-400">
-          © 2026 Speakly. All rights reserved.
+          &copy; 2026 Speakly. All rights reserved.
         </p>
       </div>
     </footer>
