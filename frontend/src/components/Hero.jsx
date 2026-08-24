@@ -17,13 +17,13 @@ function Hero() {
         </p>
 
         <div className="mt-8 flex gap-4">
-          <button className="rounded-lg bg-blue-600 px-6 py-3 font-semibold hover:bg-blue-700">
+          <a href="#features" className="rounded-lg bg-blue-600 px-6 py-3 font-semibold hover:bg-blue-700">
             Discover More
-          </button>
+          </a>
 
-          <button className="rounded-lg bg-lime-300 px-6 py-3 font-semibold text-slate-900 hover:bg-lime-400">
+          <a href="#events" className="rounded-lg bg-lime-300 px-6 py-3 font-semibold text-slate-900 hover:bg-lime-400">
             Join Event
-          </button>
+          </a>
         </div>
       </div>
 
