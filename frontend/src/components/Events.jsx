@@ -18,7 +18,7 @@ const events = [
 
 function Events() {
   return (
-    <section id="event" className="bg-slate-100 px-6 py-16 text-slate-900 lg:px-8">
+    <section id="events" className="scroll-mt-20 bg-slate-100 px-6 py-16 text-slate-900 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <div className="text-center">
           <p className="font-semibold text-blue-600">Upcoming Events</p>
