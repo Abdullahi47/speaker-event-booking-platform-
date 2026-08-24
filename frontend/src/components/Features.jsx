@@ -15,7 +15,7 @@ const features = [
 
 function Features() {
   return (
-    <section className="bg-white px-6 py-16 text-slate-900 lg:px-8">
+    <section id="features" className="scroll-mt-20 bg-white px-6 py-16 text-slate-900 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <div className="text-center">
           <p className="font-semibold text-blue-600">Why Choose Us</p>
