@@ -31,7 +31,7 @@ function Features() {
           {features.map((feature) => (
             <div
               key={feature.title}
-              className="rounded-xl border border-slate-200 p-6"
+              className="rounded-xl border border-slate-200 p-6 transition duration-300 hover:-translate-y-1 hover:shadow-lg"
             >
               <span aria-hidden="true" className="grid size-10 place-items-center rounded-lg bg-blue-50 text-xl text-blue-600">{feature.icon}</span>
               <h3 className="mt-4 text-xl font-bold">{feature.title}</h3>
