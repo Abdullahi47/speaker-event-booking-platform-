@@ -33,7 +33,7 @@ function Events() {
 
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {events.map((event) => (
-            <article className="rounded-xl bg-white p-6 shadow-sm" key={event.title}>
+            <article className="rounded-xl bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg" key={event.title}>
               <time className="font-bold text-blue-600" dateTime={event.dateTime}>{event.date}</time>
               <span className="float-right rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">{event.category}</span>
               <h3 className="mt-3 text-xl font-bold">{event.title}</h3>
