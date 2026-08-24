@@ -16,7 +16,7 @@ function Hero() {
           Zoobe KM4, Mogadishu, Somalia
         </p>
 
-        <div className="mt-8 flex gap-4">
+        <div className="mt-8 flex flex-wrap gap-4">
           <a href="#features" className="rounded-lg bg-blue-600 px-6 py-3 font-semibold hover:bg-blue-700">
             Discover More
           </a>
@@ -30,7 +30,7 @@ function Hero() {
       <div className="mt-10 md:mt-0 md:w-1/2">
         <img
           src={speakerImage}
-          alt="Conference speaker"
+          alt="Keynote speaker presenting on stage at a Speakly conference"
           className="w-full max-h-[550px] object-contain"
         />
       </div>
