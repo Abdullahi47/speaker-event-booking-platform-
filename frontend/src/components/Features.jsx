@@ -1,13 +1,16 @@
 const features = [
   {
+    icon: '★',
     title: 'Expert Speakers',
     description: 'Learn from experienced speakers and industry leaders.',
   },
   {
+    icon: '◇',
     title: 'Great Networking',
     description: 'Meet new people and build valuable connections.',
   },
   {
+    icon: '↗',
     title: 'Useful Ideas',
     description: 'Discover simple ideas that can help your business grow.',
   },
@@ -30,6 +33,7 @@ function Features() {
               key={feature.title}
               className="rounded-xl border border-slate-200 p-6"
             >
+              <span aria-hidden="true" className="grid size-10 place-items-center rounded-lg bg-blue-50 text-xl text-blue-600">{feature.icon}</span>
               <h3 className="text-xl font-bold">{feature.title}</h3>
               <p className="mt-3 text-slate-600">
                 {feature.description}
