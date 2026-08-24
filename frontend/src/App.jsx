@@ -6,13 +6,16 @@ import Footer from './components/Footer'
 
 function App() {
   return (
-    <main className="min-h-screen bg-[#071a2f] text-white">
+    <>
+      <a className="skip-link" href="#main-content">Skip to main content</a>
       <Header />
-      <Hero />
-      <Features />
-      <Events />
+      <main id="main-content" className="min-h-screen bg-[#071a2f] text-white">
+        <Hero />
+        <Features />
+        <Events />
+      </main>
       <Footer />
-    </main>
+    </>
   )
 }
 
