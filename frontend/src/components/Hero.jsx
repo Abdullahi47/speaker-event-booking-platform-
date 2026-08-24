@@ -13,7 +13,7 @@ function Hero() {
         </h1>
 
         <p className="mt-6 text-slate-300">
-          Zobe km6, mogadishu - somalia
+          Zoobe KM4, Mogadishu, Somalia
         </p>
 
         <div className="mt-8 flex gap-4">
