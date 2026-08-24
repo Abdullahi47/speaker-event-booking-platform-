@@ -14,3 +14,7 @@
   body { @apply m-0 min-w-80 min-h-screen bg-[#f8faf7] text-ink antialiased; }
   button { @apply cursor-pointer; }
 }
+
+@layer components {
+  .skip-link { @apply fixed left-4 top-4 z-50 -translate-y-24 rounded-lg bg-white px-4 py-3 font-semibold text-ink shadow-xl transition-transform focus:translate-y-0; }
+}
