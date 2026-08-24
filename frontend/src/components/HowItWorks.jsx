@@ -24,7 +24,7 @@ function HowItWorks() {
 
         <ol className="mt-10 grid gap-6 md:grid-cols-3">
           {steps.map((step) => (
-            <li className="rounded-xl bg-white p-6 shadow-sm" key={step.title}>
+            <li className="rounded-xl bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg" key={step.title}>
               <h3 className="text-xl font-bold">{step.title}</h3>
               <p className="mt-3 text-slate-600">{step.description}</p>
             </li>
