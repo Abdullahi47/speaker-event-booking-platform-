@@ -2,7 +2,7 @@ import speakerImage from '../assets/keynote-speaker.png'
 
 function Hero() {
   return (
-    <section className="mx-auto max-w-7xl px-6 py-16 md:flex md:items-center md:justify-between lg:px-8">
+    <section id="home" className="mx-auto max-w-7xl px-6 py-16 md:flex md:items-center md:justify-between lg:px-8">
       <div className="max-w-xl">
         <p className="mb-4 text-lg text-slate-300">
           Business Event - 2026
