@@ -3,6 +3,7 @@ import SectionHeading from './SectionHeading'
 
 const events = [
   {
+    id: 'business-growth-2026',
     date: '12 Sep',
     dateTime: '2026-09-12',
     fullDate: 'September 12, 2026',
@@ -16,6 +17,7 @@ const events = [
     location: 'Hargeisa, Somaliland',
   },
   {
+    id: 'technology-innovation-2026',
     date: '20 Oct',
     dateTime: '2026-10-20',
     fullDate: 'October 20, 2026',
@@ -29,6 +31,7 @@ const events = [
     location: 'Mogadishu, Somalia',
   },
   {
+    id: 'young-leaders-2026',
     date: '05 Nov',
     dateTime: '2026-11-05',
     fullDate: 'November 5, 2026',
@@ -71,8 +74,8 @@ function Events() {
           </div>
         ) : (
           <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {events.map((event, index) => (
-              <article aria-labelledby={`event-title-${index}`} className="flex h-full flex-col rounded-xl bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg" key={event.title}>
+            {events.map((event) => (
+              <article aria-labelledby={`${event.id}-title`} className="flex h-full flex-col rounded-xl bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg" key={event.id}>
                 <div className="flex items-start justify-between gap-3">
                   <time aria-label={event.fullDate} className="font-bold text-blue-600" dateTime={event.dateTime}>{event.date}</time>
                   <div className="flex gap-2">
@@ -80,7 +83,7 @@ function Events() {
                     <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">{event.category}</span>
                   </div>
                 </div>
-                <h3 className="mt-3 font-display text-xl font-bold tracking-tight" id={`event-title-${index}`}>{event.title}</h3>
+                <h3 className="mt-3 font-display text-xl font-bold tracking-tight" id={`${event.id}-title`}>{event.title}</h3>
                 <p className="mt-3 text-sm leading-6 text-slate-600">{event.description}</p>
                 <p className="mt-3 text-sm font-medium text-slate-700">{event.time}</p>
                 <p className="mt-2 font-medium text-slate-800">{event.venue}</p>
