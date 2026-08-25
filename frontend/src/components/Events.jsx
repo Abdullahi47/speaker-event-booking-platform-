@@ -41,10 +41,13 @@ const events = [
 ]
 
 function Events() {
+  const eventCount = events.length
+
   return (
     <section id="events" className="section bg-slate-100 text-slate-900">
       <div className="mx-auto max-w-7xl">
         <SectionHeading
+          copy={`Choose from ${eventCount} upcoming experiences designed to help you learn, connect, and lead.`}
           eyebrow="Upcoming Events"
           title="Join Our Next Event"
         />
