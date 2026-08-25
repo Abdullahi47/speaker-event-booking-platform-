@@ -67,6 +67,7 @@ const events = [
 function Events() {
   const upcomingEvents = [...events].sort((first, second) => first.dateTime.localeCompare(second.dateTime))
   const eventCount = upcomingEvents.length
+  const eventLabel = eventCount === 1 ? 'experience' : 'experiences'
   const getAvailability = (seatsLeft) => seatsLeft <= 30 ? 'Almost full' : 'Registration open'
   const getEnquiryLink = (event) => {
     const subject = encodeURIComponent(`Event enquiry: ${event.title}`)
@@ -90,7 +91,7 @@ function Events() {
     <section id="events" className="section bg-slate-100 text-slate-900">
       <div className="mx-auto max-w-7xl">
         <SectionHeading
-          copy={`Choose from ${eventCount} upcoming experiences designed to help you learn, connect, and lead.`}
+          copy={`Choose from ${eventCount} upcoming ${eventLabel} designed to help you learn, connect, and lead.`}
           eyebrow="Upcoming Events"
           title="Join Our Next Event"
         />
