@@ -60,6 +60,7 @@ const events = [
 
 function Events() {
   const eventCount = events.length
+  const getAvailability = (seatsLeft) => seatsLeft <= 30 ? 'Almost full' : 'Registration open'
   const getEnquiryLink = (event) => {
     const subject = encodeURIComponent(`Event enquiry: ${event.title}`)
     const body = encodeURIComponent(`Hello Speakly team,\n\nI would like to learn more about ${event.title} on ${event.fullDate}.`)
@@ -105,7 +106,9 @@ function Events() {
                 <ul aria-label={`${event.title} topics`} className="mt-3 flex flex-wrap gap-2">
                   {event.topics.map((topic) => <li className="rounded-md bg-slate-100 px-2 py-1 text-xs text-slate-700" key={topic}>{topic}</li>)}
                 </ul>
-                <p className="mt-3 text-sm font-semibold text-emerald-700">{event.seatsLeft} seats remaining</p>
+                <p className="mt-3 text-sm font-semibold text-emerald-700">
+                  {getAvailability(event.seatsLeft)} · {event.seatsLeft} seats remaining
+                </p>
                 <p className="mt-2 text-sm font-bold text-slate-900">Tickets from {event.price}</p>
                 <Button aria-label={`Enquire about ${event.title}`} as="a" className="mt-auto w-full" href={getEnquiryLink(event)}>
                   View Event
