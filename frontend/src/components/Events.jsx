@@ -14,6 +14,7 @@ const events = [
     price: '$35',
     organizer: 'Speakly Business Network',
     audience: 'Founders and executives',
+    topics: ['Strategy', 'Finance'],
     title: 'Business Growth Conference',
     description: 'Practical strategies for founders ready to scale sustainable companies.',
     category: 'Business',
@@ -31,6 +32,7 @@ const events = [
     price: '$20',
     organizer: 'Speakly Labs',
     audience: 'Developers and product teams',
+    topics: ['AI', 'Product'],
     title: 'Technology and Innovation',
     description: 'Explore emerging technology with the builders shaping East Africa.',
     category: 'Technology',
@@ -48,6 +50,7 @@ const events = [
     price: '$30',
     organizer: 'NextGen Leaders Africa',
     audience: 'Students and emerging leaders',
+    topics: ['Leadership', 'Community'],
     title: 'Young Leaders Summit',
     description: 'Connect with ambitious young leaders turning ideas into community impact.',
     category: 'Leadership',
@@ -99,6 +102,9 @@ function Events() {
                 <p className="mt-1 text-sm text-slate-600">{event.location}</p>
                 <p className="mt-2 text-xs font-medium uppercase tracking-wide text-slate-500">Hosted by {event.organizer}</p>
                 <p className="mt-2 text-sm text-slate-600"><span className="font-semibold text-slate-800">For:</span> {event.audience}</p>
+                <ul aria-label={`${event.title} topics`} className="mt-3 flex flex-wrap gap-2">
+                  {event.topics.map((topic) => <li className="rounded-md bg-slate-100 px-2 py-1 text-xs text-slate-700" key={topic}>{topic}</li>)}
+                </ul>
                 <p className="mt-3 text-sm font-semibold text-emerald-700">{event.seatsLeft} seats remaining</p>
                 <p className="mt-2 text-sm font-bold text-slate-900">Tickets from {event.price}</p>
                 <Button aria-label={`Enquire about ${event.title}`} as="a" className="mt-auto w-full" href={getEnquiryLink(event)}>
