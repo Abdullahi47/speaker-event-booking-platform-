@@ -19,6 +19,7 @@ const events = [
     description: 'Practical strategies for founders ready to scale sustainable companies.',
     category: 'Business',
     location: 'Hargeisa, Somaliland',
+    mapUrl: 'https://www.google.com/maps/search/?api=1&query=Hargeisa+Cultural+Centre',
   },
   {
     id: 'technology-innovation-2026',
@@ -37,6 +38,7 @@ const events = [
     description: 'Explore emerging technology with the builders shaping East Africa.',
     category: 'Technology',
     location: 'Mogadishu, Somalia',
+    mapUrl: 'https://www.google.com/maps/search/?api=1&query=Jazeera+Palace+Mogadishu',
   },
   {
     id: 'young-leaders-2026',
@@ -55,6 +57,7 @@ const events = [
     description: 'Connect with ambitious young leaders turning ideas into community impact.',
     category: 'Leadership',
     location: 'Nairobi, Kenya',
+    mapUrl: 'https://www.google.com/maps/search/?api=1&query=KICC+Nairobi',
   },
 ]
 
