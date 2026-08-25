@@ -103,7 +103,15 @@ function Events() {
                 <p className="mt-3 text-sm leading-6 text-slate-600">{event.description}</p>
                 <p className="mt-3 text-sm font-medium text-slate-700">{event.time}</p>
                 <p className="mt-2 font-medium text-slate-800">{event.venue}</p>
-                <p className="mt-1 text-sm text-slate-600">{event.location}</p>
+                <a
+                  className="mt-1 text-sm text-blue-700 underline-offset-4 hover:underline"
+                  href={event.mapUrl}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  {event.location}
+                  <span className="sr-only"> (opens in a new tab)</span>
+                </a>
                 <p className="mt-2 text-xs font-medium uppercase tracking-wide text-slate-500">Hosted by {event.organizer}</p>
                 <p className="mt-2 text-sm text-slate-600"><span className="font-semibold text-slate-800">For:</span> {event.audience}</p>
                 <ul aria-label={`${event.title} topics`} className="mt-3 flex flex-wrap gap-2">
