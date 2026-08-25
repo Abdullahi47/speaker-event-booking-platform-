@@ -1,102 +1,20 @@
-const mongoose = require("mongoose");
+const express = require('express')
+const controller = require('../controllers/speakerController')
+const auth = require('../middleware/authMiddleware')
+const requireRole = require('../middleware/roleMiddleware')
+const createUpload = require('../middleware/uploadMiddleware')
+const asyncHandler = require('../utils/asyncHandler')
 
-const speakerSchema = new mongoose.Schema(
-  {
-    user: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-      required: true,
-    },
+const router = express.Router()
+const speakerUpload = createUpload('speakers')
 
-    fullName: {
-      type: String,
-      required: true,
-      trim: true,
-    },
+router.get('/', asyncHandler(controller.listSpeakers))
+router.post('/', auth, requireRole('speaker'), asyncHandler(controller.createSpeaker))
+router.post('/profile-image', auth, requireRole('speaker'), speakerUpload.single('profileImage'), asyncHandler(controller.uploadProfileImage))
+router.get('/:id/availability', asyncHandler(controller.getAvailability))
+router.get('/:id/bookings', auth, asyncHandler(controller.getBookings))
+router.get('/:id', asyncHandler(controller.getSpeaker))
+router.put('/:id', auth, asyncHandler(controller.updateSpeaker))
+router.delete('/:id', auth, asyncHandler(controller.deleteSpeaker))
 
-    profileImage: {
-      type: String,
-      default: "",
-    },
-
-    title: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-
-    bio: {
-      type: String,
-      required: true,
-    },
-
-    expertise: [
-      {
-        type: String,
-        trim: true,
-      },
-    ],
-
-    experience: {
-      type: Number,
-      required: true,
-      min: 0,
-    },
-
-    location: {
-      type: String,
-      required: true,
-    },
-
-    languages: [
-      {
-        type: String,
-      },
-    ],
-
-    hourlyRate: {
-      type: Number,
-      required: true,
-      min: 0,
-    },
-
-    availability: {
-      type: Boolean,
-      default: true,
-    },
-
-    socialLinks: {
-      linkedin: {
-        type: String,
-        default: "",
-      },
-
-      twitter: {
-        type: String,
-        default: "",
-      },
-
-      website: {
-        type: String,
-        default: "",
-      },
-    },
-
-    rating: {
-      type: Number,
-      default: 0,
-      min: 0,
-      max: 5,
-    },
-
-    totalBookings: {
-      type: Number,
-      default: 0,
-    },
-  },
-  {
-    timestamps: true,
-  }
-);
-
-module.exports = mongoose.model("Speaker", speakerSchema);
+module.exports = router
