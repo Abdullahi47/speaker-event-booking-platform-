@@ -65,7 +65,8 @@ const events = [
 ]
 
 function Events() {
-  const eventCount = events.length
+  const upcomingEvents = [...events].sort((first, second) => first.dateTime.localeCompare(second.dateTime))
+  const eventCount = upcomingEvents.length
   const getAvailability = (seatsLeft) => seatsLeft <= 30 ? 'Almost full' : 'Registration open'
   const getEnquiryLink = (event) => {
     const subject = encodeURIComponent(`Event enquiry: ${event.title}`)
@@ -94,7 +95,7 @@ function Events() {
           title="Join Our Next Event"
         />
 
-        {events.length === 0 ? (
+        {upcomingEvents.length === 0 ? (
           <div className="mt-10 rounded-2xl border border-dashed border-slate-300 bg-white px-6 py-16 text-center">
             <h3 className="font-display text-xl font-bold">No upcoming events yet</h3>
             <p className="mx-auto mt-2 max-w-md text-slate-600">
@@ -104,7 +105,7 @@ function Events() {
           </div>
         ) : (
           <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {events.map((event) => (
+            {upcomingEvents.map((event) => (
               <article aria-labelledby={`${event.id}-title`} className="flex h-full flex-col rounded-xl bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg" key={event.id}>
                 <div className="flex items-start justify-between gap-3">
                   <time aria-label={event.fullDate} className="font-bold text-blue-600" dateTime={event.dateTime}>{event.date}</time>
