@@ -8,6 +8,7 @@ const events = [
     time: '9:00 AM – 4:00 PM',
     venue: 'Hargeisa Cultural Centre',
     format: 'In person',
+    seatsLeft: 42,
     title: 'Business Growth Conference',
     description: 'Practical strategies for founders ready to scale sustainable companies.',
     category: 'Business',
@@ -19,6 +20,7 @@ const events = [
     time: '10:00 AM – 5:00 PM',
     venue: 'Jazeera Palace',
     format: 'Hybrid',
+    seatsLeft: 68,
     title: 'Technology and Innovation',
     description: 'Explore emerging technology with the builders shaping East Africa.',
     category: 'Technology',
@@ -30,6 +32,7 @@ const events = [
     time: '8:30 AM – 3:30 PM',
     venue: 'KICC',
     format: 'In person',
+    seatsLeft: 25,
     title: 'Young Leaders Summit',
     description: 'Connect with ambitious young leaders turning ideas into community impact.',
     category: 'Leadership',
@@ -70,6 +73,7 @@ function Events() {
                 <p className="mt-3 text-sm font-medium text-slate-700">{event.time}</p>
                 <p className="mt-2 font-medium text-slate-800">{event.venue}</p>
                 <p className="mt-1 text-sm text-slate-600">{event.location}</p>
+                <p className="mt-3 text-sm font-semibold text-emerald-700">{event.seatsLeft} seats remaining</p>
                 <Button as="a" className="mt-auto w-full" href={`mailto:events@speakly.com?subject=${encodeURIComponent(event.title)}`}>
                   View Event
                 </Button>
