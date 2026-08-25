@@ -9,6 +9,15 @@ const app = express()
 app.use(cors({ origin: process.env.CLIENT_ORIGIN || "http://localhost:5173" }))
 app.use(express.json({ limit: "1mb" }))
 
+
+
+
+
+
+const router = require("./model/router/paymentrouter");
+
+app.use("/api", router);
+
 const imagerouter = require("./model/router/organizationrouter")
 const userRouter = require("./routes/UserRouter")
 
