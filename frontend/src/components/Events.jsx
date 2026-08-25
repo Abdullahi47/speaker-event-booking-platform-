@@ -20,6 +20,7 @@ const events = [
     category: 'Business',
     location: 'Hargeisa, Somaliland',
     mapUrl: 'https://www.google.com/maps/search/?api=1&query=Hargeisa+Cultural+Centre',
+    calendarDates: '20260912T060000Z/20260912T130000Z',
   },
   {
     id: 'technology-innovation-2026',
@@ -39,6 +40,7 @@ const events = [
     category: 'Technology',
     location: 'Mogadishu, Somalia',
     mapUrl: 'https://www.google.com/maps/search/?api=1&query=Jazeera+Palace+Mogadishu',
+    calendarDates: '20261020T070000Z/20261020T140000Z',
   },
   {
     id: 'young-leaders-2026',
@@ -58,6 +60,7 @@ const events = [
     category: 'Leadership',
     location: 'Nairobi, Kenya',
     mapUrl: 'https://www.google.com/maps/search/?api=1&query=KICC+Nairobi',
+    calendarDates: '20261105T053000Z/20261105T123000Z',
   },
 ]
 
