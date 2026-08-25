@@ -86,8 +86,9 @@ function Events() {
                 <p className="mt-2 font-medium text-slate-800">{event.venue}</p>
                 <p className="mt-1 text-sm text-slate-600">{event.location}</p>
                 <p className="mt-3 text-sm font-semibold text-emerald-700">{event.seatsLeft} seats remaining</p>
-                <Button as="a" className="mt-auto w-full" href={getEnquiryLink(event)}>
+                <Button aria-label={`Enquire about ${event.title}`} as="a" className="mt-auto w-full" href={getEnquiryLink(event)}>
                   View Event
+                  <span aria-hidden="true">→</span>
                 </Button>
               </article>
             ))}
