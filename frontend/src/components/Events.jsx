@@ -11,6 +11,7 @@ const events = [
     venue: 'Hargeisa Cultural Centre',
     format: 'In person',
     seatsLeft: 42,
+    price: '$35',
     title: 'Business Growth Conference',
     description: 'Practical strategies for founders ready to scale sustainable companies.',
     category: 'Business',
@@ -25,6 +26,7 @@ const events = [
     venue: 'Jazeera Palace',
     format: 'Hybrid',
     seatsLeft: 68,
+    price: '$20',
     title: 'Technology and Innovation',
     description: 'Explore emerging technology with the builders shaping East Africa.',
     category: 'Technology',
@@ -39,6 +41,7 @@ const events = [
     venue: 'KICC',
     format: 'In person',
     seatsLeft: 25,
+    price: '$30',
     title: 'Young Leaders Summit',
     description: 'Connect with ambitious young leaders turning ideas into community impact.',
     category: 'Leadership',
@@ -89,6 +92,7 @@ function Events() {
                 <p className="mt-2 font-medium text-slate-800">{event.venue}</p>
                 <p className="mt-1 text-sm text-slate-600">{event.location}</p>
                 <p className="mt-3 text-sm font-semibold text-emerald-700">{event.seatsLeft} seats remaining</p>
+                <p className="mt-2 text-sm font-bold text-slate-900">Tickets from {event.price}</p>
                 <Button aria-label={`Enquire about ${event.title}`} as="a" className="mt-auto w-full" href={getEnquiryLink(event)}>
                   View Event
                   <span aria-hidden="true">→</span>
