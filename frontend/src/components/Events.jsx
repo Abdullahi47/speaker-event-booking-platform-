@@ -73,6 +73,17 @@ function Events() {
 
     return `mailto:events@speakly.com?subject=${subject}&body=${body}`
   }
+  const getCalendarLink = (event) => {
+    const params = new URLSearchParams({
+      action: 'TEMPLATE',
+      text: event.title,
+      dates: event.calendarDates,
+      details: event.description,
+      location: `${event.venue}, ${event.location}`,
+    })
+
+    return `https://calendar.google.com/calendar/render?${params.toString()}`
+  }
 
   return (
     <section id="events" className="section bg-slate-100 text-slate-900">
