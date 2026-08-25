@@ -12,6 +12,7 @@ const events = [
     format: 'In person',
     seatsLeft: 42,
     price: '$35',
+    organizer: 'Speakly Business Network',
     title: 'Business Growth Conference',
     description: 'Practical strategies for founders ready to scale sustainable companies.',
     category: 'Business',
@@ -27,6 +28,7 @@ const events = [
     format: 'Hybrid',
     seatsLeft: 68,
     price: '$20',
+    organizer: 'Speakly Labs',
     title: 'Technology and Innovation',
     description: 'Explore emerging technology with the builders shaping East Africa.',
     category: 'Technology',
@@ -42,6 +44,7 @@ const events = [
     format: 'In person',
     seatsLeft: 25,
     price: '$30',
+    organizer: 'NextGen Leaders Africa',
     title: 'Young Leaders Summit',
     description: 'Connect with ambitious young leaders turning ideas into community impact.',
     category: 'Leadership',
@@ -91,6 +94,7 @@ function Events() {
                 <p className="mt-3 text-sm font-medium text-slate-700">{event.time}</p>
                 <p className="mt-2 font-medium text-slate-800">{event.venue}</p>
                 <p className="mt-1 text-sm text-slate-600">{event.location}</p>
+                <p className="mt-2 text-xs font-medium uppercase tracking-wide text-slate-500">Hosted by {event.organizer}</p>
                 <p className="mt-3 text-sm font-semibold text-emerald-700">{event.seatsLeft} seats remaining</p>
                 <p className="mt-2 text-sm font-bold text-slate-900">Tickets from {event.price}</p>
                 <Button aria-label={`Enquire about ${event.title}`} as="a" className="mt-auto w-full" href={getEnquiryLink(event)}>
