@@ -45,6 +45,12 @@ const events = [
 
 function Events() {
   const eventCount = events.length
+  const getEnquiryLink = (event) => {
+    const subject = encodeURIComponent(`Event enquiry: ${event.title}`)
+    const body = encodeURIComponent(`Hello Speakly team,\n\nI would like to learn more about ${event.title} on ${event.fullDate}.`)
+
+    return `mailto:events@speakly.com?subject=${subject}&body=${body}`
+  }
 
   return (
     <section id="events" className="section bg-slate-100 text-slate-900">
@@ -80,7 +86,7 @@ function Events() {
                 <p className="mt-2 font-medium text-slate-800">{event.venue}</p>
                 <p className="mt-1 text-sm text-slate-600">{event.location}</p>
                 <p className="mt-3 text-sm font-semibold text-emerald-700">{event.seatsLeft} seats remaining</p>
-                <Button as="a" className="mt-auto w-full" href={`mailto:events@speakly.com?subject=${encodeURIComponent(event.title)}`}>
+                <Button as="a" className="mt-auto w-full" href={getEnquiryLink(event)}>
                   View Event
                 </Button>
               </article>
