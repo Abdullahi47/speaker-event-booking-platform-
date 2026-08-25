@@ -135,6 +135,15 @@ function Events() {
                   {getAvailability(event.seatsLeft)} · {event.seatsLeft} seats remaining
                 </p>
                 <p className="mt-2 text-sm font-bold text-slate-900">Tickets from {event.price}</p>
+                <a
+                  className="mt-3 text-sm font-semibold text-blue-700 hover:underline"
+                  href={getCalendarLink(event)}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  Add to Google Calendar
+                  <span className="sr-only"> (opens in a new tab)</span>
+                </a>
                 <Button aria-label={`Enquire about ${event.title}`} as="a" className="mt-auto w-full" href={getEnquiryLink(event)}>
                   View Event
                   <span aria-hidden="true">→</span>
