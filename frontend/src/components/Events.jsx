@@ -6,6 +6,7 @@ const events = [
     date: '12 Sep',
     dateTime: '2026-09-12',
     title: 'Business Growth Conference',
+    description: 'Practical strategies for founders ready to scale sustainable companies.',
     category: 'Business',
     location: 'Hargeisa, Somaliland',
   },
@@ -13,6 +14,7 @@ const events = [
     date: '20 Oct',
     dateTime: '2026-10-20',
     title: 'Technology and Innovation',
+    description: 'Explore emerging technology with the builders shaping East Africa.',
     category: 'Technology',
     location: 'Mogadishu, Somalia',
   },
@@ -20,6 +22,7 @@ const events = [
     date: '05 Nov',
     dateTime: '2026-11-05',
     title: 'Young Leaders Summit',
+    description: 'Connect with ambitious young leaders turning ideas into community impact.',
     category: 'Leadership',
     location: 'Nairobi, Kenya',
   },
@@ -51,6 +54,7 @@ function Events() {
                   <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">{event.category}</span>
                 </div>
                 <h3 className="mt-3 font-display text-xl font-bold tracking-tight">{event.title}</h3>
+                <p className="mt-3 text-sm leading-6 text-slate-600">{event.description}</p>
                 <p className="mt-2 text-slate-600">{event.location}</p>
                 <Button as="a" className="mt-auto w-full" href={`mailto:events@speakly.com?subject=${encodeURIComponent(event.title)}`}>
                   View Event
